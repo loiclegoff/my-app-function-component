@@ -1,23 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from 'react';
+import './lib/bootstrap-4.5.3-dist/css/bootstrap.min.css'
 
-function App() {
+function App(props) {
+  // set the initial title value with injected props
+  const [title, setTitle] = useState(props.title)
+
+  //function with the event as parameter
+  const handleChangeTitle = (e) => setTitle(e.target.value)
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>
+        this is my first React Component{' '}
+      </h1>
+      <label htmlFor='titleInput'>Title</label>
+      <input
+        type='text'
+        className='form-control'
+        id='titleInput'
+        onChange={handleChangeTitle}
+        value={title}
+      />
+      <h3>{title}</h3>
     </div>
   );
 }

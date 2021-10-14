@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import './lib/bootstrap-4.5.3-dist/css/bootstrap.min.css'
 
 function App(props) {
   // set the initial title value with injected props

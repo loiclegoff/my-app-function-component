@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Badge, Form } from 'react-bootstrap'
 
 function App(props) {
   // set the initial title value with injected props
@@ -13,15 +14,12 @@ function App(props) {
     <div className="App">
       <h1>
         this is my first React Component{' '}
-        <span className='badge badge-primary'>
+        <Badge variant='primary'>
           {mouseOverNum}
-        </span>
+        </Badge>
       </h1>
-      <label htmlFor='titleInput'>Title</label>
-      <input
-        type='text'
-        className='form-control'
-        id='titleInput'
+      <Form.Label>Title</Form.Label>
+      <Form.Control
         onChange={handleChangeTitle}
         value={title}
       />

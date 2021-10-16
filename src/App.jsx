@@ -21,7 +21,7 @@ function App() {
       </Row>
       <Row>
         <Col md={4} lg={4}>
-          <RobotList robotList={robotList}/>
+          <RobotList robotList={robotList} />
         </Col>
         <Col md={4} lg={4} />
         <Col md={4} lg={4} />

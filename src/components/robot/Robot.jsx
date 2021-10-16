@@ -4,7 +4,7 @@ import { Visual } from './Visual'
 
 export function Robot(props) {
   return (
-    <Card>
+    <Card className='mb-2'>
       <Card.Header>
         <Card.Title>Robot {props.id} description</Card.Title>
       </Card.Header>

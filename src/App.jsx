@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Container, Row, Col } from 'react-bootstrap'
+import { PartList } from './components/PartList';
 import { RobotList } from './components/RobotList';
 
 function App() {
@@ -23,7 +24,9 @@ function App() {
         <Col md={4} lg={4}>
           <RobotList robotList={robotList} />
         </Col>
-        <Col md={4} lg={4} />
+        <Col md={4} lg={4}>
+          <PartList />
+        </Col>
         <Col md={4} lg={4} />
       </Row>
     </Container>

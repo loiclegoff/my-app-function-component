@@ -3,8 +3,14 @@ import { Container, Row, Col } from 'react-bootstrap'
 import { PartList } from './components/PartList';
 import { RobotList } from './components/RobotList';
 
+const getPartIdsFromRobotId = (robotList, id) => {
+  const currentRobot = robotList.find((robot) => robot.id === id)
+  return currentRobot?.parts ?? []
+}
+
 function App() {
   const [robotList, setRobotList] = useState([])
+  const [selectedRobotId, setSelectedRobotId] = useState(undefined)
 
   useEffect(() => {
     const fetchData = async () => {
@@ -15,6 +21,12 @@ function App() {
     fetchData()
   }, [])
 
+  const handleOnRobotSelected = (id) => {
+    setSelectedRobotId(id)
+  }
+
+  const selectedPartIds = getPartIdsFromRobotId(robotList, selectedRobotId)
+
   return (
     <Container fluid>
       <Row>
@@ -22,10 +34,10 @@ function App() {
       </Row>
       <Row>
         <Col md={4} lg={4}>
-          <RobotList robotList={robotList} />
+          <RobotList robotList={robotList} selectedRobotId={selectedRobotId} onRobotSelected={handleOnRobotSelected} />
         </Col>
         <Col md={4} lg={4}>
-          <PartList />
+          <PartList selectedPartIds={selectedPartIds} />
         </Col>
         <Col md={4} lg={4} />
       </Row>

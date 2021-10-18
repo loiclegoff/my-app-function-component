@@ -7,6 +7,6 @@ export function RobotList(props) {
   }
 
   return <div>
-    {props.robotList.map(robot => <Robot key={robot.id} robot={robot} />)}
+    {props.robotList.map(robot => <Robot key={robot.id} robot={robot} selectedRobotId={props.selectedRobotId} onRobotSelected={props.onRobotSelected} />)}
   </div>
 }

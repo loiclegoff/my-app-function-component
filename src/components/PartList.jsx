@@ -1,8 +1,7 @@
 import { useEffect, useState } from 'react'
-import { Spinner } from 'react-bootstrap'
 import { Part } from './part/Part'
 
-export function PartList() {
+export function PartList(props) {
   const [partList, setPartList] = useState([])
 
   useEffect(() => {
@@ -14,11 +13,7 @@ export function PartList() {
     fetchData()
   }, [])
 
-  if (partList.length < 1) {
-    return <Spinner animation='border' />
-  }
-
   return <div>
-    {partList.map(part => <Part key={part.id} part={part} />)}
+    {partList.filter(part => props.selectedPartIds.includes(part.id)).map(part => <Part key={part.id} part={part} />)}
   </div>
 }

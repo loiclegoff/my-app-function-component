@@ -36,10 +36,7 @@ function App() {
         <Col md={4} lg={4}>
           <RobotList robotList={robotList} selectedRobotId={selectedRobotId} onRobotSelected={handleOnRobotSelected} />
         </Col>
-        <Col md={4} lg={4}>
-          <PartList selectedPartIds={selectedPartIds} />
-        </Col>
-        <Col md={4} lg={4} />
+        <PartList selectedPartIds={selectedPartIds} />
       </Row>
     </Container>
   );

@@ -1,4 +1,5 @@
-import { Table, Button, Badge } from 'react-bootstrap'
+import { Table } from 'react-bootstrap'
+import { Price } from '../components/Price'
 
 export function Description(props) {
   // render function use to update the virtual dom
@@ -15,9 +16,7 @@ export function Description(props) {
       <tr>
         <td> PRICE</td>
         <td>
-          <Button variant='primary'>
-            Price <Badge>{props.value}</Badge>
-          </Button>
+          <Price value={props.part.price} />
         </td>
       </tr>
     </Table>

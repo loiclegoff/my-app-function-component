@@ -1,4 +1,4 @@
-import { UPDATE_SELECTED_PART, UPDATE_PARTS } from '../actions'
+import { UPDATE_SELECTED_PART, UPDATE_PARTS, UPDATE_SELECTED_ROBOT } from '../actions'
 
 const initialState = {
   parts: [],
@@ -20,6 +20,11 @@ const partReducer = (state = initialState, action) => {
         ...state,
         selectedPartId: action.partId,
       }
+      case UPDATE_SELECTED_ROBOT:
+        return {
+          ...state,
+          selectedPartId: undefined,
+        }
     default:
       return state
   }

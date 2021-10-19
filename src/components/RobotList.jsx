@@ -1,19 +1,24 @@
 import { useEffect, useState } from 'react';
 import { Spinner } from 'react-bootstrap'
+import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { setRobots } from '../core/actions';
+import { selectRobots } from '../core/selectors';
 import { Robot } from './robot/Robot'
 
 export function RobotList(props) {
-  const [robotList, setRobotList] = useState([])
   const [selectedRobotId, setSelectedRobotId] = useState(undefined)
+  const dispatch = useDispatch()
+  const robotList = useSelector(selectRobots)
 
   useEffect(() => {
     const fetchData = async () => {
       const resp = await fetch('https://pure-temple-56604.herokuapp.com/robots')
       const robotList = await resp.json()
-      setRobotList(robotList)
+      dispatch(setRobots(robotList))
     }
     fetchData()
-  }, [])
+  }, [dispatch])
 
   const onRobotSelected = (robot) => {
     props.onRobotSelected(robot)

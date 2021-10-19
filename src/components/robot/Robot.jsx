@@ -6,7 +6,7 @@ export function Robot(props) {
   return (
     <Card
       className='mb-2'
-      onClick={() => props.onRobotSelected(props.robot.id)}
+      onClick={() => props.onRobotSelected(props.robot)}
       bg={props.robot.id === props.selectedRobotId ? "primary" : "default"}
     >
       <Card.Header>

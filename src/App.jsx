@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { Container, Row, Col } from 'react-bootstrap'
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
@@ -9,7 +8,6 @@ import globalReducer from './core/reducers';
 const store = createStore(globalReducer)
 
 function App() {
-  const [selectedPartIds, setSelectedPartIds] = useState([])
 
   return (
     <Provider store={store}>
@@ -19,9 +17,9 @@ function App() {
         </Row>
         <Row>
           <Col md={4} lg={4}>
-            <RobotList onRobotSelected={robot => setSelectedPartIds(robot.parts)} />
+            <RobotList />
           </Col>
-          <PartList selectedPartIds={selectedPartIds} />
+          <PartList />
         </Row>
       </Container>
     </Provider>

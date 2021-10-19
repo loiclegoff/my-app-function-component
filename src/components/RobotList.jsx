@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { Spinner } from 'react-bootstrap'
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
@@ -6,8 +6,7 @@ import { setRobots } from '../core/actions';
 import { selectRobots } from '../core/selectors';
 import { Robot } from './robot/Robot'
 
-export function RobotList(props) {
-  const [selectedRobotId, setSelectedRobotId] = useState(undefined)
+export function RobotList() {
   const dispatch = useDispatch()
   const robotList = useSelector(selectRobots)
 
@@ -20,16 +19,11 @@ export function RobotList(props) {
     fetchData()
   }, [dispatch])
 
-  const onRobotSelected = (robot) => {
-    props.onRobotSelected(robot)
-    setSelectedRobotId(robot.id)
-  }
-
   if (robotList.length < 1) {
     return <Spinner animation='border' />
   }
 
   return <div>
-    {robotList.map(robot => <Robot key={robot.id} robot={robot} selectedRobotId={selectedRobotId} onRobotSelected={onRobotSelected} />)}
+    {robotList.map(robot => <Robot key={robot.id} robot={robot} />)}
   </div>
 }

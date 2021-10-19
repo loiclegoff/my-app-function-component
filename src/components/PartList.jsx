@@ -3,14 +3,14 @@ import { Col } from 'react-bootstrap'
 import { useSelector } from 'react-redux'
 import { useDispatch } from 'react-redux'
 import { setParts } from '../core/actions'
-import { selectParts } from '../core/selectors'
+import { selectPartsFromSelectedRobot } from '../core/selectors'
 import { PartDetail } from './part-detail/PartDetail'
 import { Part } from './part/Part'
 
 export function PartList(props) {
   const [selectedPartId, setSelectedPartId] = useState(undefined)
   const dispatch = useDispatch()
-  const partList = useSelector(selectParts)
+  const parts = useSelector(selectPartsFromSelectedRobot)
 
   useEffect(() => {
     const fetchData = async () => {
@@ -26,7 +26,6 @@ export function PartList(props) {
     setSelectedPartId(undefined)
   }, [props.selectedPartIds])
 
-  const parts = partList.filter(part => props.selectedPartIds.includes(part.id))
 
   return <><Col md={4} lg={4}>
     {parts.map(part => <Part key={part.id} part={part} onPartClicked={() => setSelectedPartId(part.id)} selectedPartId={selectedPartId} />)}

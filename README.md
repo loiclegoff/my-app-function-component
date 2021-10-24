@@ -326,7 +326,7 @@ GET    /parts?id=A1&id=A2
 
 _This part is not required_
 
-Add a RightSide Component to display description of selected part.
+Add a `PartDetail` Component to display description of selected part.
 
 <details>
 <summary>help</summary>

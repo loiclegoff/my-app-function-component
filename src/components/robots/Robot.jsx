@@ -1,16 +1,17 @@
 import { Card } from "react-bootstrap";
+import { useSelector } from "react-redux";
 import { Label } from "./Label";
 import { Visual } from "./Visual";
 
 export const Robot = props => {
-    
+    const selectedRobotId = useSelector(state => state.selectedRobotId)
 
     const handleOnClick = () => {
         props.handleOnClick(props.robot.id)
     }
     return <Card 
         onClick={handleOnClick} 
-        bg={props.robot.id === props.selectedRobotId ? "primary" : "default"}
+        bg={props.robot.id === selectedRobotId ? "primary" : "default"}
     >
     <Card.Header>
         <Card.Title>Robot {props.robot.id} description</Card.Title>

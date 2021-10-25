@@ -1,13 +1,11 @@
-import { useEffect, useState } from "react"
+import { useEffect } from "react"
+import { useDispatch } from "react-redux"
 
-export const useData = (url) => {
-    const [list, setList] = useState([])
-
+export const useData = (url, actionCreator) => {
+    const dispatch = useDispatch()
     useEffect(async () => {
         const result = await fetch(url)
         const data = await result.json()
-        setList(data)
+        dispatch(actionCreator(data))
       }, [])
-
-    return list
 }

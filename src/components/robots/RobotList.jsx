@@ -1,13 +1,16 @@
-import { useState } from "react"
+import { useSelector } from "react-redux"
+import { useDispatch } from "react-redux"
+import { setSelectedRobotId, updateRobots } from "../../core/actions"
 import { useData } from "../../hooks/useData"
 import { Robot } from "./Robot"
 
 export const RobotList = (props) => {
-    const robots = useData('https://pure-temple-56604.herokuapp.com/robots')
-    const [selectedRobotId, setSelectedRobotId] = useState(undefined)
-
+    useData('https://pure-temple-56604.herokuapp.com/robots', updateRobots)
+    const robots = useSelector(state => state.robots)
+    const dispatch = useDispatch()
+    
     const handleOnClick = (idRobot) => {
-        setSelectedRobotId(idRobot)
+        dispatch(setSelectedRobotId(idRobot))
         const robot = robots.find(r => r.id === idRobot)
         const partIds = robot?.parts ?? []
         props.setSelectedPartIds(partIds)
@@ -18,7 +21,6 @@ export const RobotList = (props) => {
             key={robot.id}
             robot={robot}
             handleOnClick={handleOnClick}
-            selectedRobotId={selectedRobotId}
         /> 
     )
 } 

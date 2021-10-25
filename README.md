@@ -158,9 +158,9 @@ Open `public/index.html` and add bootstrap import to use css rules
 ## Exemple
 
 ```jsx
-import React from 'react'
+import React, { useState } from 'react'
 
-function App({ title }) {
+function App(props) {
   // state is initialized by a props
   const [title, setTitle] = useState(props.title)
 

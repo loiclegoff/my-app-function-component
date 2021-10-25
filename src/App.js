@@ -10,14 +10,12 @@ import { reducer } from './core/reducer';
 const store = createStore(reducer)
 
 function App() {
-  const [selectedPartIds, setSelectedPartIds] = useState([])
   return (
     <Provider store={store}>
       <div className='App'>
-        {selectedPartIds}
         <Row>
-          <Col md={4} lg={4}><RobotList setSelectedPartIds={setSelectedPartIds} selectRobotId={selectedPartIds}/> </Col>
-          <Col md={4} lg={4}><PartList selectedPartIds={selectedPartIds}/> </Col>
+          <Col md={4} lg={4}><RobotList/> </Col>
+          <Col md={4} lg={4}><PartList/> </Col>
         </Row>
 
       </div>

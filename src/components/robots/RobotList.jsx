@@ -11,9 +11,6 @@ export const RobotList = (props) => {
     
     const handleOnClick = (idRobot) => {
         dispatch(setSelectedRobotId(idRobot))
-        const robot = robots.find(r => r.id === idRobot)
-        const partIds = robot?.parts ?? []
-        props.setSelectedPartIds(partIds)
     }
 
     return robots.map(robot =>

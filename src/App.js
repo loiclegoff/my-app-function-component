@@ -1,25 +1,22 @@
-import logo from './logo.svg';
+import { useState } from 'react';
+import { Col, Row } from 'react-bootstrap';
 import './App.css';
+import { PartList } from './components/parts/PartList';
+import { RobotList } from "./components/robots/RobotList";
 
 function App() {
+  const [selectedPartIds, setSelectedPartIds] = useState([])
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='App'>
+      {selectedPartIds}
+      <Row>
+        <Col md={4} lg={4}><RobotList setSelectedPartIds={setSelectedPartIds} selectRobotId={selectedPartIds}/> </Col>
+        <Col md={4} lg={4}><PartList selectedPartIds={selectedPartIds}/> </Col>
+      </Row>
+
     </div>
-  );
+  )
+
 }
 
 export default App;
